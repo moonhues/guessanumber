@@ -10,9 +10,12 @@
       </ul>
     </div>
   <% end %>
-
   <div class="field">
-    <%= f.label :number %><br>
+    <%= f.label :max_number, "Please enter a maximum number:" %><br>
+    <%= f.number_field :max_number %>
+  </div>
+  <div class="field">
+    <%= f.label :number, "Please enter a number:" %><br>
     <%= f.number_field :number %>
   </div>
   <div class="field">

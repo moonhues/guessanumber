@@ -3,7 +3,7 @@
 <p>
   <strong>Number:</strong>
   <%= @game.number %>
-</p>
+  </p>
 
 <p>
   <strong>Completed:</strong>
@@ -13,11 +13,21 @@
 <%= link_to 'Edit', edit_game_path(@game) %> |
 <%= link_to 'Back', games_path %>
 
-
-<%= form_for @game.guesses.build, url: game_guesses_path(@game) do |f| %>
-<p>
-  <strong>Guess:</strong>
-  <%= f.number_field :number %>
-  <%= f.submit %>
- <p>
+  <% if @game.completed? %>
+    <p>
+    <strong>Number:</strong>
+    <%= @game.number %>
+    </p>
+  <% else %>
+    <%= form_for @game.guesses.build, url: game_guesses_path(@game) do |f| %>
+    <p>
+      <strong>Guess:</strong>
+      <%= f.number_field :number %>
+      <%= f.submit %>
+   <p>
+  <% end %>
 <% end %>
+<p>
+  <strong>No. of guesses: </strong>
+    <%= @game.guesses.count %>
+</p>
